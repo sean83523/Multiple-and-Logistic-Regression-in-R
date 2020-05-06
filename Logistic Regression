@@ -1,0 +1,19 @@
+#1. Fitting a line to a binary response
+## scatterplot with jitter
+data_space <- ggplot(data = MedGPA, aes(y = Acceptance, x = GPA)) + 
+  geom_jitter(width = 0, height = 0.05, alpha = 0.5)
+
+## linear regression line
+data_space + 
+  geom_smooth(method = "lm", se = FALSE)
+ 
+#2. Using geom_smooth()
+
+## scatterplot with jitter
+data_space <- ggplot(data = MedGPA, aes(y = Acceptance, x = GPA)) + 
+  geom_jitter(width = 0, height = 0.05, alpha = 0.5)
+
+## add logistic curve
+data_space +
+  geom_smooth(method = "glm", se = FALSE, method.args = list(family = "binomial"))
+  
